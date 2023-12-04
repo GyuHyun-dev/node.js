@@ -3,9 +3,9 @@ import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
-    path: '/',            // 경로
-    name: 'home',         // import 해야함
-    component: HomeView   // component 값 넣어주기
+    path: '/',
+    name: 'home',
+    component: HomeView
   },
   {
     path: '/about',
