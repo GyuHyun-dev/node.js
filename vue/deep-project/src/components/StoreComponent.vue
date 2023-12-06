@@ -4,7 +4,7 @@
         <label>제품 ID : <input type="text" v-model="productInfo.product_id"></label><br>
         <label>제품명 : <input type="text" v-model="productInfo.product_name"></label><br>
         <label>카테고리 : <input type="radio" value="A" v-model="productInfo.category">A
-                         <input type="radio" value="B" v-model="productInfo.category">B
+                        <input type="radio" value="B" v-model="productInfo.category">B
         </label><br>
         <button type="button" @click="addCart">추가</button>
     </form>
@@ -40,6 +40,7 @@ export default {
         };
     },
     computed : {
+        // state 와 getters 는 서로 따로 접근해야함
         productList() {
             return this.$store.state.cart;
         },
@@ -54,7 +55,7 @@ export default {
                 product_name : this.productInfo.product_name,
                 category : this.productInfo.category
             }
-            this.$store.commit('addProduct', obj);
+            this.$store.dispatch('addProduct', obj);
         }
     }
 };
