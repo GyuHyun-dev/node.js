@@ -36,6 +36,11 @@ and s.to_date = CAST('9999-01-01' as date)
 and e.emp_no = ?`,
     empInsert : `insert into employees
     set ?`,
+
+    deptList : `select dept_no,
+                       dept_name
+                from departments
+                order by dept_no`,
     
     deptInsert : `insert into dept_emp
     set emp_no = ?, dept_no = ?, from_date = ?, to_date = CAST('9999-01-01' as date)`,
