@@ -32,12 +32,25 @@
                 </tbody>
             </table>
         </div>
+        <div class="row">
+            <!-- 해당 게시글의 댓글이 있다면 -->
+            <CommentList v-if="boardInfo.comment> 0" 
+                        v-bind:bno="boardInfo.no"/>
+            <!-- 해당 게시글의 댓글이 있다면 -->
+            <div v-else class="card text-center">
+                댓글없음
+            </div>
+        </div>
     </div>
 </template>
 <script>
 import axios from 'axios';
+import CommentList from '../components/CommentList.vue';
 
 export default {
+    components: { 
+        CommentList
+    },
     data() {
         return {
             searchNo: '',
@@ -55,7 +68,7 @@ export default {
             let result = await axios.get(`/api/boards/${this.searchNo}`)
                                     .catch(err => console.log(err));
             this.boardInfo = result.data;
-           
+        
         },
         getDateFormat(date) {
             return this.$dateFormat(date);

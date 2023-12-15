@@ -9,5 +9,7 @@ module.exports = {
                 FROM t_board_board
                 WHERE no = ?`,  // 물음표 한개 배열 x 객체타입
     boardInsert : `INSERT INTO t_board_board SET ? `,  // 물음표 한개 배열 x 단일값
-    boardUpdate : `UPDATE t_board_board SET ? WHERE no = ? ` // 배열 / where no = ? 는 number라고 지정되어있어서 단일값
+    boardUpdate : `UPDATE t_board_board SET ? WHERE no = ? `, // 배열 / where no = ? 는 number라고 지정되어있어서 단일값
+    commentList : `SELECT NO, WRITER, CONTENT, CREATED_DATE 
+    FROM T_COMMENT_BOARD WHERE BNO = ?`
 }

@@ -8,6 +8,8 @@ app.use(
   })
 );
 
+app.use(express.urlencoded({ extended : false}));  // 폼태그 사용할때 씀.
+
 const server = app.listen(3000, () => {
   console.log("Server started. port 3000.");
 });
@@ -37,4 +39,11 @@ app.put("/boards/:bno", async (request, res) => {
   res.send((await db.connection("boardUpdate", data)));
 });
 
+// 해당 개시글의 댓글
+// 하나의 라우팅에서 키값을 계속 보내주면 데이터 처리 편함
+app.get("/comments", async (request, res) => {
+  // querystring => ?key=value&key=value...
+  let data = request.query.bno;   // 쿼리로 우리가 넘겨줄 키값 
+  res.send((await db.connection("commentList", data)));
+});
 
